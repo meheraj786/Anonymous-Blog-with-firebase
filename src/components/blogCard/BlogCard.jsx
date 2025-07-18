@@ -25,7 +25,7 @@ const BlogCard = ({ blog }) => {
       snapshot.forEach((comment) => {
         const content = comment.val();
         const id = comment.key;
-        if (id==blog.id) {
+        if (comment.val().blogId==blog.id) {
           arr.push({ ...content, id: id });
         }
       });

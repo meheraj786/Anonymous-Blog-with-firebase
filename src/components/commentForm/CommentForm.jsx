@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Flex from "../../layouts/Flex";
 import { FaPaperPlane, FaRegComment } from "react-icons/fa6";
 import toast, { Toaster } from "react-hot-toast";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, push, ref, set } from "firebase/database";
 const newDate = () => {
   const date = new Date().toLocaleDateString("en-GB", {
     day: "2-digit",
@@ -43,10 +43,11 @@ const CommentForm = ({blog, commentLength}) => {
     } else {
       const date = newDate();
       const db = getDatabase();
-      set(ref(db, "comments/" + blog.id), {
+      set(push(ref(db, "comments/")), {
         name: commentInfo.name,
         comment: commentInfo.comment,
         date: date,
+        blogId: blog.id
       }).then(() => {
         toast.success("Comment Published Successfully!");
         setCommentInfo({
