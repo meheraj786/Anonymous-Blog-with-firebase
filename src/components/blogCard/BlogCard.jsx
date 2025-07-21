@@ -70,12 +70,12 @@ const BlogCard = ({ blog }) => {
           <h4 className="text-gray-500">Anonymous Blog Post</h4>
           <span className="text-gray-500">Published {blog.date}</span>
         </Flex>
-        <CommentForm blog={blog} commentLength={commentList.length} />
+        {/* <CommentForm blog={blog} commentLength={commentList.length} />
         {
           commentList.map((comment)=>(
             <CommentList comment={comment} />
           ))
-        }
+        } */}
       </div>
     </div>
   );
